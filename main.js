@@ -1,14 +1,14 @@
 const quizDb = [
     {
-        question:"#1 Capital of Lithuania",
+        question:"#1 Capital of Lithuania?",
         a:"Vilnius",
         b:"Kaunas",
         c:"Klaipeda",
         d:"Taurage",
-        answer:"answe1"
+        answer:"answer1"
     },
     {
-        question:" #2 Capital of Latvia",
+        question:" #2 Capital of Latvia?",
         a:"Vilnius",
         b:"Ryga",
         c:"Berlin",
@@ -17,7 +17,7 @@ const quizDb = [
 
     },
     {
-        question:"#3 Capital of Estonia",
+        question:"#3 Capital of Estonia?",
         a:"Vilnius",
         b:"Riga",
         c:"Tartu",
@@ -25,7 +25,7 @@ const quizDb = [
         answer:"answer4"
     },
     {
-        question:"#4 Capital of Germany",
+        question:"#4 Capital of Germany?",
         a:"Berlin",
         b:"Paris",
         c:"Hamburg",
@@ -33,7 +33,7 @@ const quizDb = [
         answer:"answer1"
     },
     {
-        question:"#5 Capital of Spain",
+        question:"#5 Capital of Spain?",
         a:"Berlin",
         b:"Paris",
         c:"Hamburg",
@@ -42,9 +42,9 @@ const quizDb = [
 
     },
 ];
-console.log(quizDb[0].answer)
 
 const question = document.querySelector('.question')
+const answers = document.querySelectorAll('.answer')
 const option1 =  document.querySelector('#option1')
 const option2 =  document.querySelector('#option2')
 const option3 =  document.querySelector('#option3')
@@ -55,10 +55,9 @@ let countQuestions = 0
 
 const loadQuestion = () =>{
 
-    const questionList = quizDb[countQuestions]
-
+    const questionList = quizDb[countQuestions]    
     question.innerText = questionList.question;
-
+    console.log(questionList.question)
     option1.innerText = questionList.a;
     option2.innerText = questionList.b;
     option3.innerText = questionList.c;
@@ -66,3 +65,19 @@ const loadQuestion = () =>{
 
 }
 loadQuestion()
+
+const checkAnswer = () =>{
+    let answer;
+
+    answers.forEach((answerElem)=>{
+        if(answerElem.checked){
+            answer = answerElem.id
+        }
+    })
+    return answer;
+}
+
+submitBtn.addEventListener('click',() => {
+    const selectedAnswer = checkAnswer()
+    console.log(selectedAnswer)
+})
