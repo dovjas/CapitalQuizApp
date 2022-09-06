@@ -99,6 +99,7 @@ submitBtn.addEventListener('click',() => {
         <button id="btn-submit" onclick="location.reload()">Play Again</button>
         `;
         showResult.classList.remove('score-block');
+        
     }
 
 })
