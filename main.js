@@ -45,26 +45,29 @@ const quizDb = [
 
 const question = document.querySelector('.question')
 const answers = document.querySelectorAll('.answer')
+const showResult = document.querySelector('#show-score')
+
 const option1 =  document.querySelector('#option1')
 const option2 =  document.querySelector('#option2')
 const option3 =  document.querySelector('#option3')
 const option4 =  document.querySelector('#option4')
 const submitBtn = document.querySelector('#btn-submit')
 
-let countQuestions = 0
+let countQuestion = 0
+let score = 0
 
 const loadQuestion = () =>{
 
-    const questionList = quizDb[countQuestions]    
+    const questionList = quizDb[countQuestion]    
     question.innerText = questionList.question;
     console.log(questionList.question)
     option1.innerText = questionList.a;
     option2.innerText = questionList.b;
     option3.innerText = questionList.c;
     option4.innerText = questionList.d;
-
 }
-loadQuestion()
+
+loadQuestion();
 
 const checkAnswer = () =>{
     let answer;
@@ -73,11 +76,29 @@ const checkAnswer = () =>{
         if(answerElem.checked){
             answer = answerElem.id
         }
-    })
+    });
     return answer;
-}
+};
 
 submitBtn.addEventListener('click',() => {
     const selectedAnswer = checkAnswer()
     console.log(selectedAnswer)
+
+    if(selectedAnswer === quizDb[countQuestion].answer){
+        score++
+    };
+
+    countQuestion++;
+
+    if(countQuestion <quizDb.length){
+        loadQuestion();
+    }else{
+        showResult.innerHTML = 
+        ` 
+        <h2>Your result is: ${score} / ${quizDb.length} </h2>
+        <button id="btn-submit" onclick="location.reload()">Play Again</button>
+        `;
+        showResult.classList.remove('score-block');
+    }
+
 })
