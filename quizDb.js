@@ -4,8 +4,7 @@ const quizDb = [
         a:"Vilnius",
         b:"Kaunas",
         c:"Klaipeda",
-        d:"Taurage",
-        answer:"answe1"
+        d:"Taurage"
     },
     {
         question:" #2 Capital of Latvia",
@@ -42,27 +41,3 @@ const quizDb = [
 
     },
 ];
-console.log(quizDb[0].answer)
-
-const question = document.querySelector('.question')
-const option1 =  document.querySelector('#option1')
-const option2 =  document.querySelector('#option2')
-const option3 =  document.querySelector('#option3')
-const option4 =  document.querySelector('#option4')
-const submitBtn = document.querySelector('#btn-submit')
-
-let countQuestions = 0
-
-const loadQuestion = () =>{
-
-    const questionList = quizDb[countQuestions]
-
-    question.innerText = questionList.question;
-
-    option1.innerText = questionList.a;
-    option2.innerText = questionList.b;
-    option3.innerText = questionList.c;
-    option4.innerText = questionList.d;
-
-}
-loadQuestion()
